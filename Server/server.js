@@ -8,21 +8,13 @@ var PORT = 3000;
 app.use(express.urlencoded({ extended: true }));
 app.use(express.json());
 
-var reservations = [
-  {
-    routeName: "d",
-    name: "",
-    phoneNumber: 0,
-    email: "",
-    uniqueID: 0
-  }
-];
+var reservations = [];
 
 app.get("/", function(req, res) {
     res.sendFile(path.join(__dirname, "../index.html"));
   });
   
-  app.get("/reserv", function(req, res) {
+  app.get("/reserve", function(req, res) {
     res.sendFile(path.join(__dirname, "../reservation.html"));
   });
 
@@ -40,7 +32,6 @@ app.get("/", function(req, res) {
 
    reservations.push(newReservation);
    res.json(reservations);
-
  });
 
 
