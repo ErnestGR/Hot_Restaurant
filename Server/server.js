@@ -30,6 +30,14 @@ app.get("/", function(req, res) {
   return res.json(new Array (reservations,waitlist));
 });
 
+app.get("/api/tables", function(req, res) {
+  res.json(reservations);
+});
+app.get("/api/waitlist", function(req, res) {
+  res.json(waitlist);
+});
+
+
 
  app.post("/api/reservations",function(req,res){
    var newReservation = req.body;
