@@ -20,7 +20,13 @@ app.get("/", function(req, res) {
 
  app.get("/tables", function(req,res){
    res.sendFile(path.join(__dirname, "../tables.html"));
+
+  
  });
+
+ app.get("/api/reservations", function(req, res) {
+  return res.json(reservations);
+});
 
 
  app.post("/api/reservations",function(req,res){
@@ -31,7 +37,8 @@ app.get("/", function(req, res) {
    console.log(newReservation);
 
    reservations.push(newReservation);
-   res.json(reservations);
+
+   res.json(newReservation);
  });
 
 
