@@ -67,16 +67,23 @@
 
     <script type="text/javascript">
        $.get("api/reservations",function(data){
-           console.log(data)
+           console.log(data);
+           
+         
            if (data){
 
-               for (var i = 0;i<data.length;i++){
+               for (var i = 0;i<data[0].length; i++){
                 $("#tableSection").append(
                     `<div class="well" id="tableWell-01">
-                        <h2><span class="label label-primary">${i+1}</span> | ${data[i].uniqueID}</h2></div>`)
+                        <h2><span class="label label-primary">${i+1}</span> | ${data[0][i].uniqueID}</h2></div>`)
                }
-           }
-
+               for (var i = 0;i<data[1].length;i++){
+                $("#waitlistSection").append(
+                    `<div class="well" id="tableWell-01">
+                       <h2><span class="label label-primary">${i+5}</span> | ${data[1][i].uniqueID}</h2></div>`)
+                }
+                
+            }
        });
     </script>
 </body>

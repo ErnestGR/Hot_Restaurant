@@ -9,6 +9,8 @@ app.use(express.urlencoded({ extended: true }));
 app.use(express.json());
 
 var reservations = [];
+var waitlist = [];
+
 
 app.get("/", function(req, res) {
     res.sendFile(path.join(__dirname, "../index.html"));
@@ -25,7 +27,7 @@ app.get("/", function(req, res) {
  });
 
  app.get("/api/reservations", function(req, res) {
-  return res.json(reservations);
+  return res.json(new Array (reservations,waitlist));
 });
 
 
@@ -36,9 +38,16 @@ app.get("/", function(req, res) {
 
    console.log(newReservation);
 
+   if (reservations.length < 5){
    reservations.push(newReservation);
+   res.json(true);
+   
+   }else{
+     waitlist.push(newReservation);
+     res.json(false);
+   }
 
-   res.json(newReservation);
+   
  });
 
 
